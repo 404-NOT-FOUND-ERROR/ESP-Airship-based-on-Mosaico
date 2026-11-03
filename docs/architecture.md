@@ -19,8 +19,9 @@ Mosaico display / touch
           ▼
    app_motor_safety (pure C state machine)
           │
-          ├──► app_motor_output_gate (fail-closed A/B plan)
-          └──► future app_motor_drv8833 ──► DRV8833 ──► motor
+          └──► app_motor_output_gate (host-tested; stage-4 integration)
+                              │
+                              └──► future app_motor_drv8833 ──► DRV8833 ──► motor
 
    app_imu (BMI270 owner) ──► synchronized read-only snapshot
 ```

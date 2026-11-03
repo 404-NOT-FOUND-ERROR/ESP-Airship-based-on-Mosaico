@@ -19,8 +19,9 @@ Mosaico 屏幕 / 触摸
           ▼
     app_motor_safety（纯 C 状态机）
           │
-          ├──► app_motor_output_gate（失败归零）
-          └──► 后续 app_motor_drv8833 ──► DRV8833 ──► 电机
+          └──► app_motor_output_gate（已通过主机测试，阶段 4 接入）
+                              │
+                              └──► 后续 app_motor_drv8833 ──► DRV8833 ──► 电机
 
    app_imu（BMI270 所有者） ──► 同步只读快照
 ```

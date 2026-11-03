@@ -4,7 +4,6 @@ build_*/
 build-*/
 cmake-build-*/
 managed_components/
-/dependencies.lock
 sdkconfig
 sdkconfig.old
 sdkconfig.backup
@@ -47,4 +46,4 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# Keep sdkconfig*.defaults, idf_component.yml and source assets versioned.
+# Keep dependencies.lock, sdkconfig*.defaults, idf_component.yml and source assets versioned.

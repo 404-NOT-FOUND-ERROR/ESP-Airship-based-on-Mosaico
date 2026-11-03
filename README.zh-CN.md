@@ -34,14 +34,17 @@
 
 本项目把应用源码与 Mosaico SDK、BSP、产品工具分开保存：
 
+Windows 先准备 **PowerShell 7**、**Python 3.10+** 和 **Git 2.28+**。电脑端测试使用 **Zig 0.14.1**，下面的命令会把它安装到已忽略的本地工具目录。
+
 ```powershell
 git clone https://github.com/404-NOT-FOUND-ERROR/ESP-Airship-based-on-Mosaico.git
 cd ESP-Airship-based-on-Mosaico
+python -m pip install --target .tools/host-compiler ziglang==0.14.1
 .\scripts\bootstrap-mosaico-workspace.ps1
 .\scripts\run-host-checks.ps1
 ```
 
-引导脚本会按记录版本克隆 `esp-mosaico/esp-mosaico-vibe`，并把应用复制到 `.mosaico-workspace/projects/airboat_baseline`。它不会连接设备，也不会写入固件。主机检查通过后，再准备 ESP-IDF 6.2 和 Mosaico 工具。
+引导脚本会按记录版本克隆 `esp-mosaico/esp-mosaico-vibe`，并把应用复制到 `.mosaico-workspace/projects/airboat_baseline`。主机检查在电脑上完成。固件构建使用 ESP-IDF 6.2 的 `7b9cc1ac79f865983f59bb8ff3ff43eb74ff1dbe` 提交，目标为 `esp32s31`；进入该阶段时按固定版本工作区的说明准备环境。
 
 重复运行会复用相同源码。已有目录内容变化时，使用 `-ForceSync`，脚本会先把原目录完整保存到 `.mosaico-workspace/.airboat-backups/`，再同步公开源码。
 

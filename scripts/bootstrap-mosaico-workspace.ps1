@@ -37,7 +37,7 @@ if (-not (Test-Path -LiteralPath (Join-Path $workspacePath '.git'))) {
     if ((Test-Path -LiteralPath $workspacePath) -and @(Get-ChildItem -LiteralPath $workspacePath -Force).Count) {
         throw "Choose an empty directory for the Mosaico workspace: $workspacePath"
     }
-    Invoke-Git @('clone', '--filter=blob:none', $remote, $workspacePath)
+    Invoke-Git -Arguments @('clone', '--filter=blob:none', $remote, $workspacePath)
 }
 $origin = & git -C $workspacePath remote get-url origin
 if ($LASTEXITCODE -ne 0 -or (Normalize-Remote $origin) -ne (Normalize-Remote $remote)) {
@@ -47,10 +47,10 @@ $changes = & git -C $workspacePath status --porcelain --untracked-files=no
 if ($LASTEXITCODE -ne 0 -or $changes) { throw 'Commit or stash tracked changes in the Mosaico workspace before bootstrap.' }
 $head = & git -C $workspacePath rev-parse HEAD
 if ($head -ne $revision) {
-    Invoke-Git @('-C', $workspacePath, 'fetch', '--depth', '1', 'origin', $revision)
-    Invoke-Git @('-C', $workspacePath, 'checkout', '--detach', $revision)
+    Invoke-Git -Arguments @('-C', $workspacePath, 'fetch', '--depth', '1', 'origin', $revision)
+    Invoke-Git -Arguments @('-C', $workspacePath, 'checkout', '--detach', $revision)
 }
-Invoke-Git @('-C', $workspacePath, 'submodule', 'update', '--init', '--recursive', '--',
+Invoke-Git -Arguments @('-C', $workspacePath, 'submodule', 'update', '--init', '--recursive', '--',
     'submodule/esp-mosaico-bsp', 'submodule/esp-mosaico-utils')
 
 $source = Join-Path $repoRoot 'firmware\airboat_baseline'

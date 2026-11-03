@@ -1,37 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
   <title id="title">ESP AirBoat project roadmap</title>
-  <desc id="desc">Verified Mosaico software baseline leading to a single motor bench, three channels and modular helium balloons.</desc>
-  <rect width="1200" height="560" fill="#f5f2eb"/>
+  <desc id="desc">Eight stages from a verified Mosaico software baseline to optional airship features.</desc>
+  <rect width="1200" height="620" fill="#f5f2eb"/>
   <rect x="48" y="44" width="1104" height="120" rx="8" fill="#121211"/>
   <circle cx="88" cy="84" r="10" fill="#ff5600"/>
   <text x="116" y="90" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#f9f7f2">ESP AIRBOAT</text>
   <text x="116" y="124" font-family="Arial, sans-serif" font-size="16" fill="#bdb8ae">MOSAICO / MODULAR AIRSHIP ROADMAP</text>
-  <text x="1060" y="96" text-anchor="end" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#ff8650">3 / 7</text>
+  <text x="1060" y="96" text-anchor="end" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#ff8650">STAGE 3</text>
   <text x="1060" y="123" text-anchor="end" font-family="Arial, sans-serif" font-size="13" fill="#bdb8ae">BASELINE VERIFIED</text>
-  <path d="M124 286H1076" stroke="#c9c1b3" stroke-width="4"/>
+  <path d="M92 276H1108" stroke="#c9c1b3" stroke-width="4"/>
   <g font-family="Arial, sans-serif">
-    <circle cx="150" cy="286" r="22" fill="#4c8c6b"/>
-    <circle cx="390" cy="286" r="22" fill="#4c8c6b"/>
-    <circle cx="630" cy="286" r="22" fill="#4c8c6b"/>
-    <circle cx="870" cy="286" r="22" fill="#ff5600"/>
-    <circle cx="1070" cy="286" r="22" fill="#d0c9bd"/>
-    <text x="150" y="292" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">0</text>
-    <text x="390" y="292" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">1</text>
-    <text x="630" y="292" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">2</text>
-    <text x="870" y="292" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">3</text>
-    <text x="1070" y="292" text-anchor="middle" font-size="14" font-weight="700" fill="#675f53">4</text>
-    <text x="150" y="346" text-anchor="middle" font-size="16" font-weight="700" fill="#121211">OFFLINE</text>
-    <text x="150" y="370" text-anchor="middle" font-size="13" fill="#675f53">safety core</text>
-    <text x="390" y="346" text-anchor="middle" font-size="16" font-weight="700" fill="#121211">MOSAICO</text>
-    <text x="390" y="370" text-anchor="middle" font-size="13" fill="#675f53">live identity</text>
-    <text x="630" y="346" text-anchor="middle" font-size="16" font-weight="700" fill="#121211">SENSOR</text>
-    <text x="630" y="370" text-anchor="middle" font-size="13" fill="#675f53">BMI270 / UI</text>
-    <text x="870" y="346" text-anchor="middle" font-size="16" font-weight="700" fill="#121211">MOTOR</text>
-    <text x="870" y="370" text-anchor="middle" font-size="13" fill="#675f53">DRV8833 bench</text>
-    <text x="1070" y="346" text-anchor="middle" font-size="16" font-weight="700" fill="#121211">BALLOONS</text>
-    <text x="1070" y="370" text-anchor="middle" font-size="13" fill="#675f53">tethered flight</text>
+    <g fill="#4c8c6b">
+      <circle cx="92" cy="276" r="20"/><circle cx="237" cy="276" r="20"/>
+      <circle cx="382" cy="276" r="20"/><circle cx="527" cy="276" r="20"/>
+    </g>
+    <circle cx="672" cy="276" r="20" fill="#ff5600"/>
+    <g fill="#d0c9bd"><circle cx="817" cy="276" r="20"/><circle cx="962" cy="276" r="20"/><circle cx="1108" cy="276" r="20"/></g>
+    <g text-anchor="middle" font-size="13" font-weight="700">
+      <g fill="#fff"><text x="92" y="281">0</text><text x="237" y="281">1</text><text x="382" y="281">2</text><text x="527" y="281">3</text><text x="672" y="281">4</text></g>
+      <g fill="#675f53"><text x="817" y="281">5</text><text x="962" y="281">6</text><text x="1108" y="281">7</text></g>
+    </g>
+    <g text-anchor="middle" fill="#121211">
+      <text x="92" y="330" font-size="14" font-weight="700">OFFLINE</text><text x="92" y="351" font-size="11" fill="#675f53">safety core</text>
+      <text x="237" y="330" font-size="14" font-weight="700">IDENTITY</text><text x="237" y="351" font-size="11" fill="#675f53">Mosaico</text>
+      <text x="382" y="330" font-size="14" font-weight="700">UPDATE</text><text x="382" y="351" font-size="11" fill="#675f53">prep</text>
+      <text x="527" y="330" font-size="14" font-weight="700">SENSOR</text><text x="527" y="351" font-size="11" fill="#675f53">BMI270 / UI</text>
+      <text x="672" y="330" font-size="14" font-weight="700">MOTOR</text><text x="672" y="351" font-size="11" fill="#675f53">single bench</text>
+      <text x="817" y="330" font-size="14" font-weight="700">THREE</text><text x="817" y="351" font-size="11" fill="#675f53">channels</text>
+      <text x="962" y="330" font-size="14" font-weight="700">LIFT</text><text x="962" y="351" font-size="11" fill="#675f53">modules</text>
+      <text x="1108" y="330" font-size="14" font-weight="700">OPTIONS</text><text x="1108" y="351" font-size="11" fill="#675f53">extras</text>
+    </g>
   </g>
-  <rect x="48" y="438" width="1104" height="70" rx="8" fill="#e7e0d5"/>
-  <text x="78" y="478" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#121211">NEXT GATE</text>
-  <text x="234" y="478" font-family="Arial, sans-serif" font-size="16" fill="#675f53">Arrival photos → parameter screen → single motor, propeller removed</text>
+  <rect x="48" y="438" width="1104" height="96" rx="8" fill="#e7e0d5"/>
+  <text x="78" y="476" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#121211">NEXT GATE</text>
+  <text x="78" y="504" font-family="Arial, sans-serif" font-size="15" fill="#675f53">Arrival photos → parameter screen → single motor, propeller removed</text>
+  <text x="78" y="560" font-family="Arial, sans-serif" font-size="13" fill="#675f53">Green = verified · Orange = next · Gray = planned</text>
 </svg>

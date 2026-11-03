@@ -34,14 +34,17 @@ The original AirPuff project remains the reference for the airship concept and p
 
 The supported workflow keeps this repository as the application source and uses a separate Mosaico checkout for the SDK, BSP, and product tools.
 
+On Windows, install **PowerShell 7**, **Python 3.10+**, and **Git 2.28+**. The portable checks use **Zig 0.14.1**, installed below into the ignored local tools directory.
+
 ```powershell
 git clone https://github.com/404-NOT-FOUND-ERROR/ESP-Airship-based-on-Mosaico.git
 cd ESP-Airship-based-on-Mosaico
+python -m pip install --target .tools/host-compiler ziglang==0.14.1
 .\scripts\bootstrap-mosaico-workspace.ps1
 .\scripts\run-host-checks.ps1
 ```
 
-The bootstrap script clones `esp-mosaico/esp-mosaico-vibe` at the recorded revision and copies the application into `.mosaico-workspace/projects/airboat_baseline`. It does not connect to a device or write firmware. Install ESP-IDF 6.2 and the Mosaico tools only after the host checks pass.
+The bootstrap script clones `esp-mosaico/esp-mosaico-vibe` at the recorded revision and copies the application into `.mosaico-workspace/projects/airboat_baseline`. Host checks run on the PC. Firmware builds use ESP-IDF 6.2 at commit `7b9cc1ac79f865983f59bb8ff3ff43eb74ff1dbe` for `esp32s31`; follow the pinned workspace's setup guide when starting that stage.
 
 Rerunning bootstrap reuses an identical application. For a changed copy, `-ForceSync` saves the previous directory in `.mosaico-workspace/.airboat-backups/` before importing the public source.
 
