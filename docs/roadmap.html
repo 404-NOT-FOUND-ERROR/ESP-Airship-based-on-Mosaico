@@ -142,16 +142,16 @@
     <section class="hero">
       <div class="shell hero-grid">
         <div>
-          <div class="eyebrow"><span data-zh>阶段 3 / 已验收</span><span data-en>PHASE 3 / VERIFIED</span></div>
+          <div class="eyebrow"><span data-zh>阶段 4 / 到货准备</span><span data-en>PHASE 4 / ARRIVAL PREP</span></div>
           <h1><span data-zh>让飞艇从<br>安全基线起飞</span><span data-en>BUILD THE AIRSHIP<br>FROM A SAFE CORE</span></h1>
-          <p class="hero-copy"><span data-zh>以 ESP-Mosaico 为主机，先验证界面、传感器和安全状态机，再逐步接入 DRV8833、三路动力和模块化氦气球。</span><span data-en>ESP-Mosaico is the host. We verify the UI, sensors, and safety state machine before adding DRV8833, three motor channels, and modular helium lift.</span></p>
+          <p class="hero-copy"><span data-zh>ESP-Mosaico 屏幕、安全面板和 BMI270 已验收。材料到货后，从参数核对和一台拆桨电机开始。</span><span data-en>The Mosaico display, safety panel, and BMI270 are verified. Start with the arrival review and one propeller-off motor.</span></p>
           <div class="hero-line"></div>
         </div>
         <div class="hero-meta" aria-label="Project snapshot">
           <div class="hero-stat"><strong>1.2.0</strong><span><span data-zh>常规软件基线</span><span data-en>stable baseline</span></span></div>
           <div class="hero-stat"><strong>250ms</strong><span><span data-zh>命令有效期</span><span data-en>command timeout</span></span></div>
-          <div class="hero-stat"><strong>3 AXIS</strong><span><span data-zh>推进 / 偏航 / 升降</span><span data-en>propulsion / yaw / lift</span></span></div>
-          <div class="hero-stat"><strong>1 → 3</strong><span><span data-zh>单电机到三路</span><span data-en>single motor to three</span></span></div>
+          <div class="hero-stat"><strong>3 AXES</strong><span><span data-zh>规划：推进 / 偏航 / 升降</span><span data-en>planned: propulsion / yaw / lift</span></span></div>
+          <div class="hero-stat"><strong>1 → 3</strong><span><span data-zh>验证路径：单电机到三路</span><span data-en>test path: one motor to three</span></span></div>
         </div>
       </div>
     </section>
@@ -162,8 +162,8 @@
         <div class="status-grid reveal">
           <article class="status"><div class="status-dot"></div><strong><span data-zh>Mosaico UI</span><span data-en>Mosaico UI</span></strong><span data-zh>屏幕、触摸与安全面板已通过</span><span data-en>display, touch, and safety panel verified</span></article>
           <article class="status"><div class="status-dot"></div><strong><span data-zh>安全状态机</span><span data-en>Safety core</span></strong><span data-zh>ARM / E-STOP / CLEAR 已通过</span><span data-en>ARM / E-STOP / CLEAR verified</span></article>
-          <article class="status"><div class="status-dot"></div><strong><span data-zh>BMI270</span><span data-en>BMI270</span></strong><span data-zh>采样、姿态与恢复路径已通过</span><span data-en>sampling, pose, and recovery verified</span></article>
-          <article class="status next"><div class="status-dot"></div><strong><span data-zh>DRV8833</span><span data-en>DRV8833</span></strong><span data-zh>到货后先做单电机拆桨台架</span><span data-en>propeller-off single-motor bench next</span></article>
+          <article class="status"><div class="status-dot"></div><strong><span data-zh>BMI270</span><span data-en>BMI270</span></strong><span data-zh>姿态与软件层恢复已验收</span><span data-en>pose and software-level recovery verified</span></article>
+          <article class="status next"><div class="status-dot"></div><strong><span data-zh>DRV8833</span><span data-en>DRV8833</span></strong><span data-zh>材料已下单；到货后做单电机拆桨台架</span><span data-en>ordered; propeller-off single-motor bench after arrival</span></article>
         </div>
       </div>
     </section>
@@ -232,6 +232,8 @@
     <section class="section dark-band" id="links">
       <div class="shell">
         <div class="section-head reveal"><div><div class="section-kicker">06 / KEEP BUILDING</div><h2><span data-zh>资料都在入口处</span><span data-en>EVERYTHING HAS AN ENTRY</span></h2></div><p class="section-lede"><span data-zh>从源码、管线、到货记录开始；每次只推进一条边界。</span><span data-en>Start with source, pipeline, and arrival records. Move one boundary at a time.</span></p></div>
+        <div class="command reveal"><code>docs/pipeline.md</code><a href="pipeline.md" class="copy" aria-label="Open development pipeline">↗</a></div>
+        <div style="height: 8px"></div>
         <div class="command reveal"><code>firmware/airboat_baseline/</code><a href="../README.md" class="copy" aria-label="Open README">↗</a></div>
         <div style="height: 8px"></div>
         <div class="command reveal"><code>hardware/drv8833/arrival-single-motor-checklist.md</code><a href="../hardware/drv8833/arrival-single-motor-checklist.md" class="copy" aria-label="Open checklist">↗</a></div>
@@ -365,6 +367,7 @@
       if ('IntersectionObserver' in window && !reducedMotion.matches) {
         const observer = new IntersectionObserver(entries => entries.forEach(entry => {
           if (!entry.isIntersecting) return;
+          entry.target.classList.add('visible');
           entry.target.animate([{ opacity: .35, transform: 'translateY(10px)' }, { opacity: 1, transform: 'none' }], { duration: 480, easing: 'cubic-bezier(.2,.7,.2,1)' });
           observer.unobserve(entry.target);
         }), { threshold: .1 });

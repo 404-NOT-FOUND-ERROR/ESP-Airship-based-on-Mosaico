@@ -4,7 +4,7 @@
 
 这个仓库把 ESP-Mosaico 变成一个可逐步复刻的飞艇控制平台：先完成安全软件基线，再接一台无桨电机，之后扩展三路动力，最后用多个独立氦气球组成模块化浮力结构。
 
-![AirBoat 路线图](docs/assets/roadmap-overview.svg)
+[打开交互式路线图](https://404-not-found-error.github.io/ESP-Airship-based-on-Mosaico/roadmap.html) · ![AirBoat 路线图](docs/assets/roadmap-overview.svg)
 
 ## 仓库内容
 
@@ -24,8 +24,8 @@
 | --- | --- |
 | Mosaico 显示与触摸 | 已在目标设备验收 |
 | ARM / E-STOP / CLEAR 状态机 | 主机测试和设备界面均已验收 |
-| BMI270 生命周期与姿态采集 | 基线已验收；装艇方向需要重新标定 |
-| DRV8833 实际电机输出 | 下一阶段；以到货参数和单路台架为入口 |
+| BMI270 生命周期与姿态采集 | 基线已验收；软件恢复通过，电气 I²C 故障另待实测 |
+| DRV8833 实际电机输出 | 阶段 4；材料已下单，等待到货和参数核验 |
 | 模块化气囊与气压计 | 设计阶段；先分别称重和测净升力 |
 
 “已验收”只表示已有记录通过；“下一阶段”和“设计阶段”是计划，不代表已经飞行。
@@ -75,7 +75,7 @@ python scripts/check-arrival.py --record hardware/drv8833/arrival-record.templat
 5. 在吊舱通风位置增加 BMP581，提供环境气压和相对高度趋势；囊内压力/漏气检测单独设计。
 6. 台架和系留低速测试通过后，再加入摄像头、遥控和闭环飞行。
 
-可视化路线见 [docs/roadmap.html](docs/roadmap.html)。
+打开[交互式路线图](https://404-not-found-error.github.io/ESP-Airship-based-on-Mosaico/roadmap.html)查看当前阶段和到货后的操作；页面源码位于 [docs/roadmap.html](docs/roadmap.html)。
 
 ## 参考资料
 

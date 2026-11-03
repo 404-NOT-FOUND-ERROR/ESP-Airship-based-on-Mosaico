@@ -2,6 +2,8 @@
 
 [中文](pipeline.zh-CN.md) · [Architecture](architecture.md) · [Roadmap](roadmap.html)
 
+As of 2026-11-04, stages 0–3B are verified. Stage 4 is in arrival preparation; the DRV8833 and material kit are ordered and await delivery. Firmware output is still a software plan, not a physical motor result.
+
 Each stage has a clear entry and exit. Build success, device update, live health, and physical behavior are recorded separately.
 
 | Stage | Deliverable | Exit gate | State |
@@ -9,8 +11,9 @@ Each stage has a clear entry and exit. Build success, device update, live health
 | 0. Offline baseline | portable components, host tests, simulator | fixed toolchain and tests pass | Verified |
 | 1. Device baseline | live discovery, identity and inventory | one selected Mosaico target, no guessed port | Verified |
 | 2. Update preparation | retained-app restore path and package checks | update method chosen from live layout | Verified |
-| 3. Sensor/UI baseline | display, touch, BMI270 and pose records | UI chain, static sample, pose mapping and recovery checks pass | Verified |
-| 4. Single motor | DRV8833 adapter and propeller-off bench | current, direction, timeout, E-STOP, restart and temperature pass | Next |
+| 3A. Display and safety UI | display, touch, safety state machine, Vibe Mode round trip | stable run and on-device interaction pass | Verified |
+| 3B. BMI270 baseline | static samples, six poses, six rotation directions, recovery | samples, pose mapping, application-level recovery, and physical UI regression pass; electrical I²C fault recovery is future hardware work | Verified |
+| 4. Single motor | arrival review, DRV8833 adapter and propeller-off bench | one motor passes default state, direction, timeout, E-STOP, restart, current and temperature checks | Arrival prep |
 | 5. Three channels | propulsion, yaw and lift outputs | power and fault sequences pass together | Planned |
 | 6. Modular lift | balloon frame, mass and tether tests | near-neutral balance and controlled tether motion | Planned |
 | 7. Optional features | camera, remote input, barometer and closed loop | each feature has its own acceptance record | Planned |
@@ -25,4 +28,4 @@ Each stage has a clear entry and exit. Build success, device update, live health
 
 ## Next session
 
-When the parcel arrives, open [the single-motor checklist](../hardware/drv8833/arrival-single-motor-checklist.md), photograph and weigh the parts, fill the record template, run the parameter screen, then stop at the first unresolved field. No motor power is connected during this preparation.
+When the parcel arrives, open [the single-motor checklist](../hardware/drv8833/arrival-single-motor-checklist.md), photograph and weigh the parts, fill the record template, and run the parameter screen. Once every required value has a source, review the single-channel firmware and pass its PC tests before connecting the bench. The first powered test uses one secured motor with its propeller removed.

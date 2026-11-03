@@ -4,7 +4,7 @@
 
 A modular helium airship built around ESP-Mosaico. This repository contains the AirBoat safety baseline, hardware notes for a DRV8833 motor stage, a reproducible Mosaico workspace bootstrap, and a staged path from a safe bench test to a modular balloon platform.
 
-![AirBoat roadmap](docs/assets/roadmap-overview.svg)
+[Open the interactive roadmap](https://404-not-found-error.github.io/ESP-Airship-based-on-Mosaico/roadmap.html) · ![AirBoat roadmap](docs/assets/roadmap-overview.svg)
 
 ## What is here
 
@@ -24,8 +24,8 @@ The original AirPuff project remains the reference for the airship concept and p
 | --- | --- |
 | Mosaico display and touch | Verified on the ESP-Mosaico target |
 | ARM / E-STOP / CLEAR state machine | Verified in host tests and on-device UI |
-| BMI270 lifecycle and pose capture | Verified baseline; airship mounting still needs a new calibration |
-| DRV8833 physical output | Next stage; hardware and motor parameters are the gate |
+| BMI270 lifecycle and pose capture | Verified baseline; software recovery passed, electrical I²C fault recovery remains to test |
+| DRV8833 physical output | Stage 4; ordered hardware is awaiting arrival and parameter checks |
 | Modular balloon lift and barometer | Design stage; measure each module before flight |
 
 “Verified” means the evidence in the development records passed. “Next” and “Design” are plans; they do not claim a flight result.
@@ -75,7 +75,7 @@ The check only screens parameters. A separate bench acceptance is required befor
 5. Add a BMP581 as an ambient barometer in the gondola for relative altitude trend. Treat balloon pressure/leak sensing as a separate design.
 6. Add camera, remote control, and closed-loop flight only after the tethered low-speed gate is complete.
 
-The visual version of this plan is [docs/roadmap.html](docs/roadmap.html).
+The [interactive roadmap](https://404-not-found-error.github.io/ESP-Airship-based-on-Mosaico/roadmap.html) shows the current stage and what to do when the package arrives. The source is [docs/roadmap.html](docs/roadmap.html).
 
 ## References
 
