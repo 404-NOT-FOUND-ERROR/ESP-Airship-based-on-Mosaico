@@ -1,0 +1,49 @@
+# ESP-IDF and Mosaico build output
+build/
+build-*/
+managed_components/
+sdkconfig
+sdkconfig.old
+sdkconfig.*.local
+compile_commands.json
+CMakeFiles/
+CMakeCache.txt
+.ninja_*
+*.o
+*.obj
+*.elf
+*.map
+*.bin
+*.irisfw
+
+# Local tooling, caches and evidence
+.venv/
+venv/
+.cache/
+.codex-runs/
+research/
+evidence/
+__pycache__/
+*.py[cod]
+*.log
+*.tmp
+
+# Credentials and machine-specific files
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+
+# Editors and OS files
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Local Mosaico checkout created by the bootstrap script
+.mosaico-workspace/
+.tools/

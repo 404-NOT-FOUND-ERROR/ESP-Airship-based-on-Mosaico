@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="600" viewBox="0 0 1160 600" role="img" aria-labelledby="title desc">
+<title id="title">飞行供电：一颗外部电池，两条电源支路</title><desc id="desc">1S电池分别供H桥和5V升压器，所有逻辑共地。电机电流不经过主机扩展输出。</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0 0L10 4L0 8Z" fill="#45667b"/></marker></defs>
+<style>text{font-family:'Microsoft YaHei','Segoe UI',sans-serif;fill:#183442}.title{font-size:27px;font-weight:700}.sub{font-size:17px;fill:#466271}.label{font-size:19px;font-weight:600}.note{font-size:16px;fill:#476777}.arrow{fill:none;stroke:#45667b;stroke-width:2.4;marker-end:url(#arrow)}</style>
+<rect width="1160" height="600" rx="18" fill="#f5f9fb"/>
+<text x="34" y="43" class="title">飞行供电：一颗外部电池，两条电源支路</text>
+<rect x="35" y="220" width="225" height="105" rx="12" fill="#fff0d5" stroke="#b8cdd6"/>
+<text x="147.5" y="251" text-anchor="middle" class="label">1S 动力电池</text>
+<text x="147.5" y="278" text-anchor="middle" class="sub">普通锂电最高 4.2V</text>
+<text x="147.5" y="302" text-anchor="middle" class="sub">容量 / 插头 / 克重待定</text>
+<rect x="390" y="100" width="260" height="95" rx="12" fill="#fff0d5" stroke="#b8cdd6"/>
+<text x="520.0" y="131" text-anchor="middle" class="label">可拔插动力断电点</text>
+<text x="520.0" y="158" text-anchor="middle" class="sub">电流能力覆盖同时启动</text>
+<rect x="780" y="100" width="340" height="95" rx="12" fill="#e7edf9" stroke="#b8cdd6"/>
+<text x="950.0" y="131" text-anchor="middle" class="label">H 桥 VM → 三台电机</text>
+<text x="950.0" y="158" text-anchor="middle" class="sub">按电机参数选择板卡与线材</text>
+<rect x="390" y="335" width="260" height="95" rx="12" fill="#fff0d5" stroke="#b8cdd6"/>
+<text x="520.0" y="366" text-anchor="middle" class="label">已装接头 5V 升压器</text>
+<text x="520.0" y="393" text-anchor="middle" class="sub">1S 低电量时仍稳定输出</text>
+<rect x="780" y="335" width="340" height="95" rx="12" fill="#dceff2" stroke="#b8cdd6"/>
+<text x="950.0" y="366" text-anchor="middle" class="label">Mosaico H1</text>
+<text x="950.0" y="393" text-anchor="middle" class="sub">pin17：5V_IN   pin20：GND</text>
+<path d="M260 248H308V147H390" class="arrow"/>
+<path d="M650 147H780" class="arrow"/>
+<path d="M260 291H308V382H390" class="arrow"/>
+<path d="M650 382H780" class="arrow"/>
+<text x="680" y="365" class="note">固定 5V</text>
+<path d="M145 325V500H950V430M950 195V500M520 430V500" fill="none" stroke="#617b83" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="355" y="527" class="note">公共 GND；粗动力回路与逻辑地回路分别走线后汇合</text>
+<text x="35" y="574" class="note">桌面：主机用 USB-C、动力另供并共地；飞行：USB-C 与外接 5V_IN 不同时接入。</text>
+</svg>

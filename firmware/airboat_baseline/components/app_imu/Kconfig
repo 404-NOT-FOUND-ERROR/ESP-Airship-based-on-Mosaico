@@ -1,0 +1,13 @@
+menu "AirBoat BMI270 diagnostics"
+
+config AIRBOAT_IMU_DIAGNOSTIC_FAULT_TEST
+    bool "Inject one bounded BMI270 read fault sequence"
+    default n
+    help
+        For a temporary diagnostic build, replace five consecutive successful
+        application-layer reads with ESP_FAIL five seconds after the first
+        successful sensor read.
+        The next real read resumes normal operation. This does not inject an
+        I2C or BMI270 hardware fault.
+
+endmenu

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="620" viewBox="0 0 1160 620" role="img" aria-labelledby="title desc">
+<title id="title">单 Mosaico：控制与感知链路</title><desc id="desc">概念连接图；不是连接器的实体插接方向。右侧取下Interaction，接两个双路H桥。</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0 0L10 4L0 8Z" fill="#45667b"/></marker></defs>
+<style>text{font-family:'Microsoft YaHei','Segoe UI',sans-serif;fill:#183442}.title{font-size:27px;font-weight:700}.sub{font-size:17px;fill:#466271}.label{font-size:19px;font-weight:600}.note{font-size:16px;fill:#476777}.arrow{fill:none;stroke:#45667b;stroke-width:2.4;marker-end:url(#arrow)}</style>
+<rect width="1160" height="620" rx="18" fill="#f5f9fb"/>
+<text x="34" y="43" class="title">单 Mosaico：控制与感知链路</text>
+<rect x="35" y="85" width="240" height="110" rx="12" fill="#ffffff" stroke="#b8cdd6"/>
+<text x="155.0" y="116" text-anchor="middle" class="label">手机网页 / 触摸 / 语音</text>
+<text x="155.0" y="143" text-anchor="middle" class="sub">只提交短时、限幅命令</text>
+<text x="155.0" y="167" text-anchor="middle" class="sub">第一版先用网页</text>
+<rect x="365" y="85" width="330" height="110" rx="12" fill="#dceff2" stroke="#b8cdd6"/>
+<text x="530.0" y="116" text-anchor="middle" class="label">ESP-Mosaico V1.2</text>
+<text x="530.0" y="143" text-anchor="middle" class="sub">主控、屏幕、音频、Wi-Fi</text>
+<text x="530.0" y="167" text-anchor="middle" class="sub">上电 DISARMED</text>
+<rect x="855" y="85" width="270" height="110" rx="12" fill="#e5f2e9" stroke="#b8cdd6"/>
+<text x="990.0" y="116" text-anchor="middle" class="label">已有摄像头</text>
+<text x="990.0" y="143" text-anchor="middle" class="sub">只接左侧 H2</text>
+<text x="990.0" y="167" text-anchor="middle" class="sub">后续再加入并发测试</text>
+<path d="M275 140H365" class="arrow"/>
+<path d="M855 140H695" class="arrow"/>
+<rect x="35" y="285" width="240" height="110" rx="12" fill="#e5f2e9" stroke="#b8cdd6"/>
+<text x="155.0" y="316" text-anchor="middle" class="label">姿态 / 高度测量</text>
+<text x="155.0" y="343" text-anchor="middle" class="sub">BMI270：板载已有</text>
+<text x="155.0" y="367" text-anchor="middle" class="sub">BMP581：定高阶段再买</text>
+<path d="M275 340H325V173H365" class="arrow"/>
+<text x="297" y="248" class="note">I2C 数据</text>
+<rect x="365" y="285" width="330" height="110" rx="12" fill="#dceff2" stroke="#b8cdd6"/>
+<text x="530.0" y="316" text-anchor="middle" class="label">右侧 H1 → 6 根逻辑线</text>
+<text x="530.0" y="343" text-anchor="middle" class="sub">46 / 47 / 11 / 10 / 38 / 5</text>
+<text x="530.0" y="367" text-anchor="middle" class="sub">GPIO39 留给模块识别</text>
+<path d="M530 195V285" class="arrow"/>
+<text x="550" y="248" class="note">100Hz 控制任务 + 超时处理</text>
+<rect x="855" y="255" width="270" height="84" rx="12" fill="#e7edf9" stroke="#b8cdd6"/>
+<text x="990.0" y="286" text-anchor="middle" class="label">双路 H 桥 × 2</text>
+<text x="990.0" y="313" text-anchor="middle" class="sub">预装接头、只用 3 通道</text>
+<path d="M695 326H775V297H855" class="arrow"/>
+<text x="728" y="279" class="note">3.3V 逻辑</text>
+<rect x="855" y="395" width="270" height="110" rx="12" fill="#e7edf9" stroke="#b8cdd6"/>
+<text x="990.0" y="426" text-anchor="middle" class="label">三台原装电机</text>
+<text x="990.0" y="453" text-anchor="middle" class="sub">推进 / 偏航 / 升降</text>
+<text x="990.0" y="477" text-anchor="middle" class="sub">以实物推力方向标定</text>
+<path d="M990 339V395" class="arrow"/>
+<rect x="35" y="465" width="660" height="90" rx="12" fill="#fff0d5" stroke="#b8cdd6"/>
+<text x="365.0" y="496" text-anchor="middle" class="label">没有背挂电池不阻碍桌面阶段</text>
+<text x="365.0" y="523" text-anchor="middle" class="sub">先用 USB-C；飞行供电与动力电池另行配置</text>
+<text x="35" y="592" class="note">设计审查支持这条路线；电机电流、免焊接头、重量和并发时序仍需实物验收。</text>
+</svg>

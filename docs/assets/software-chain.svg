@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="470" viewBox="0 0 1160 470" role="img" aria-labelledby="title desc">
+<title id="title">控制软件：每次动作都有到期时间</title><desc id="desc">操作者命令进入安全状态机，固定周期任务驱动H桥。传感器与主控故障另外检测。</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0 0L10 4L0 8Z" fill="#45667b"/></marker></defs>
+<style>text{font-family:'Microsoft YaHei','Segoe UI',sans-serif;fill:#183442}.title{font-size:27px;font-weight:700}.sub{font-size:17px;fill:#466271}.label{font-size:19px;font-weight:600}.note{font-size:16px;fill:#476777}.arrow{fill:none;stroke:#45667b;stroke-width:2.4;marker-end:url(#arrow)}</style>
+<rect width="1160" height="470" rx="18" fill="#f5f9fb"/>
+<text x="34" y="43" class="title">控制软件：每次动作都有到期时间</text>
+<rect x="30" y="105" width="235" height="105" rx="12" fill="#ffffff" stroke="#b8cdd6"/>
+<text x="147.5" y="136" text-anchor="middle" class="label">操作者 / AI 请求</text>
+<text x="147.5" y="163" text-anchor="middle" class="sub">方向、限幅、持续时间</text>
+<text x="147.5" y="187" text-anchor="middle" class="sub">AI 动作示例 200ms</text>
+<rect x="320" y="105" width="240" height="105" rx="12" fill="#dceff2" stroke="#b8cdd6"/>
+<text x="440.0" y="136" text-anchor="middle" class="label">安全状态机</text>
+<text x="440.0" y="163" text-anchor="middle" class="sub">DISARMED / MANUAL</text>
+<text x="440.0" y="187" text-anchor="middle" class="sub">FAULT 锁定</text>
+<rect x="615" y="105" width="240" height="105" rx="12" fill="#dceff2" stroke="#b8cdd6"/>
+<text x="735.0" y="136" text-anchor="middle" class="label">100Hz 控制任务</text>
+<text x="735.0" y="163" text-anchor="middle" class="sub">检查命令新鲜度</text>
+<text x="735.0" y="187" text-anchor="middle" class="sub">过期清零 + 取消 ARM</text>
+<rect x="910" y="105" width="220" height="105" rx="12" fill="#e7edf9" stroke="#b8cdd6"/>
+<text x="1020.0" y="136" text-anchor="middle" class="label">三路 H 桥</text>
+<text x="1020.0" y="163" text-anchor="middle" class="sub">执行受限输出</text>
+<text x="1020.0" y="187" text-anchor="middle" class="sub">上电默认停止</text>
+<path d="M265 157H320" class="arrow"/>
+<path d="M560 157H615" class="arrow"/>
+<path d="M855 157H910" class="arrow"/>
+<rect x="30" y="290" width="530" height="88" rx="12" fill="#ffffff" stroke="#b8cdd6"/>
+<text x="295.0" y="321" text-anchor="middle" class="label">STOP / 断网 / 页面失焦 / 命令过期</text>
+<text x="295.0" y="348" text-anchor="middle" class="sub">手机约 50ms 更新；首轮超时目标约 300ms</text>
+<path d="M440 290V210" class="arrow"/>
+<rect x="615" y="290" width="515" height="88" rx="12" fill="#fff0d5" stroke="#b8cdd6"/>
+<text x="872.5" y="321" text-anchor="middle" class="label">主控卡死是另一条故障路径</text>
+<text x="872.5" y="348" text-anchor="middle" class="sub">看门狗复位 + 硬件默认态；独立断电作为回退</text>
+<text x="30" y="437" class="note">客户端失联通过 ≠ 主控卡死通过；语音 STOP 不能替代物理动力断电点。</text>
+</svg>

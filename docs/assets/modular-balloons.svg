@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="520" viewBox="0 0 920 520" role="img" aria-labelledby="title desc">
+<title id="title">独立主囊与侧囊，共用承力框架</title><desc id="desc">横截面示意，三个囊独立阀门，共用框架，吊舱和通风气压计在下方，尺寸不按比例。</desc>
+<rect width="920" height="520" rx="24" fill="#f4f7ef"/>
+<g font-family="Microsoft YaHei,Segoe UI,sans-serif" fill="#19352f">
+<text x="40" y="44" font-size="22" font-weight="700">主囊 + 左右侧囊 · 结构候选</text><text x="40" y="72" font-size="14" fill="#687972">横截面示意 / 数量与尺寸按净升力、称重和配平实测确定</text>
+<g stroke="#769b76" stroke-width="2" fill="#dae9c6"><ellipse cx="185" cy="211" rx="112" ry="83"/><ellipse cx="460" cy="184" rx="145" ry="106"/><ellipse cx="735" cy="211" rx="112" ry="83"/></g>
+<g text-anchor="middle" font-size="19" font-weight="700"><text x="185" y="206">侧囊 A</text><text x="460" y="179">主囊</text><text x="735" y="206">侧囊 B</text></g>
+<g text-anchor="middle" font-size="13" fill="#486b52"><text x="185" y="231">独立密封 · 独立阀门</text><text x="460" y="204">独立密封 · 独立阀门</text><text x="735" y="231">独立密封 · 独立阀门</text></g>
+<g fill="none" stroke="#8ca28a" stroke-width="4"><path d="M119 269 170 330M251 269 280 330M362 261 360 330M558 261 560 330M669 269 640 330M801 269 750 330"/></g>
+<rect x="153" y="323" width="614" height="17" rx="7" fill="#507666"/><path d="M355 340v59m210-59v59" stroke="#7c9584" stroke-width="4"/>
+<rect x="307" y="398" width="306" height="80" rx="17" fill="#fff" stroke="#bdcdbd" stroke-width="2"/>
+<text x="460" y="432" text-anchor="middle" font-size="19" font-weight="700">吊舱 · 重心位于囊组下方</text><text x="460" y="460" text-anchor="middle" font-size="14" fill="#687972">Mosaico / 电池 / H 桥 / 电机与线束</text>
+<rect x="416" y="353" width="88" height="28" rx="8" fill="#176653"/><text x="460" y="372" fill="white" text-anchor="middle" font-size="12">BMP581</text>
+<path d="m510 368 125 0" stroke="#176653" stroke-width="2"/><text x="646" y="369" font-size="14">通风小舱 · 测外界气压</text><text x="646" y="390" font-size="12" fill="#687972">远离桨流与热源</text>
+<text x="40" y="431" font-size="14" font-weight="700">连接带 → 框架 → 吊舱</text><text x="40" y="454" font-size="12" fill="#687972">单囊称重后，组合再次测量</text>
+<text x="40" y="504" font-size="13" fill="#687972">结构共用承力件，气路各自独立。安装位置示意，按实物配平调整。</text></g></svg>

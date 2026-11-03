@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#121211">
+  <title>ESP AirBoat / Mosaico roadmap</title>
+  <style>
+    :root {
+      --ink: #101010; --muted: #70706c; --paper: #f6f6f3; --panel: #eaeae5;
+      --line: #cbcbc6; --orange: #ff4c01; --orange-soft: #ff986c; --green: #34694f;
+      --blue: #4a7483; --white: #fffdf9; --shadow: 0 18px 48px rgba(24, 20, 15, .09);
+      color-scheme: light;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; line-height: 1.5; }
+    button, a { font: inherit; }
+    a { color: inherit; }
+    .shell { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    .topbar { position: sticky; top: 0; z-index: 5; background: rgba(245, 242, 235, .92); border-bottom: 1px solid var(--line); backdrop-filter: blur(14px); }
+    .topbar-inner { display: flex; align-items: center; justify-content: space-between; min-height: 64px; gap: 20px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-size: 14px; font-weight: 800; letter-spacing: .04em; }
+    .brand-mark { width: 13px; height: 13px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 6px rgba(255, 86, 0, .12); }
+    .nav { display: flex; align-items: center; gap: 6px; }
+    .nav a, .lang { border: 0; border-radius: 6px; padding: 8px 10px; background: transparent; color: var(--muted); text-decoration: none; cursor: pointer; transition: background .2s, color .2s, transform .2s; }
+    .nav a:hover, .lang:hover { background: var(--panel); color: var(--ink); transform: translateY(-1px); }
+    .lang { border: 1px solid var(--line); color: var(--ink); }
+    .hero { padding: 78px 0 64px; background: var(--ink); color: var(--white); overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; align-items: end; gap: 48px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--orange-soft); font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 24px; height: 2px; background: var(--orange); }
+    h1 { margin: 16px 0 18px; max-width: 760px; font-size: clamp(42px, 7vw, 82px); line-height: .98; letter-spacing: -.055em; }
+    .hero-copy { max-width: 650px; margin: 0; color: #c7c1b7; font-size: 18px; }
+    .hero-meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: #3d3a35; border: 1px solid #3d3a35; }
+    .hero-stat { min-height: 110px; padding: 20px; background: #1b1a18; }
+    .hero-stat strong { display: block; font-size: 26px; color: var(--white); }
+    .hero-stat span { display: block; margin-top: 4px; color: #a9a197; font-size: 12px; }
+    .hero-line { height: 1px; margin-top: 56px; background: #393632; transform-origin: left; animation: grow .9s ease both; }
+    .section { padding: 76px 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 28px; }
+    .section-kicker { color: var(--orange); font-size: 12px; font-weight: 850; letter-spacing: .16em; text-transform: uppercase; }
+    h2 { margin: 7px 0 0; font-size: clamp(28px, 4vw, 44px); line-height: 1.02; letter-spacing: -.04em; }
+    .section-lede { max-width: 480px; margin: 0; color: var(--muted); }
+    .status-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .status { min-height: 142px; padding: 20px; border: 1px solid var(--line); background: rgba(255, 253, 249, .52); transition: transform .25s, box-shadow .25s, border-color .25s; }
+    .status:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: #bdb4a7; }
+    .status-dot { width: 9px; height: 9px; margin-bottom: 28px; border-radius: 50%; background: var(--green); }
+    .status.next .status-dot { background: var(--orange); }
+    .status.plan .status-dot { background: #a9a197; }
+    .status strong { display: block; font-size: 17px; }
+    .status span { display: block; margin-top: 6px; color: var(--muted); font-size: 13px; }
+    .dark-band { background: var(--ink); color: var(--white); }
+    .dark-band .section-lede { color: #bdb8ae; }
+    .chain-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
+    .chain { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .chain-node { position: relative; min-height: 112px; padding: 18px; border: 1px solid #3b3935; background: #1b1a18; }
+    .chain-node::after { content: "→"; position: absolute; right: -18px; top: 44px; color: var(--orange); font-size: 22px; }
+    .chain-node:nth-child(2)::after, .chain-node:nth-child(4)::after { display: none; }
+    .chain-node span { display: block; color: var(--orange-soft); font-size: 11px; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
+    .chain-node strong { display: block; margin-top: 18px; font-size: 17px; }
+    .chain-note { padding: 24px; border-left: 2px solid var(--orange); color: #d2ccc3; }
+    .chain-note p { margin: 0 0 18px; }
+    .chain-note p:last-child { margin-bottom: 0; }
+    .roadmap { display: grid; grid-template-columns: 280px 1fr; gap: 24px; }
+    .stage-list { display: grid; align-content: start; gap: 6px; }
+    .stage-button { display: flex; align-items: center; gap: 12px; width: 100%; padding: 13px 14px; border: 1px solid transparent; border-radius: 6px; background: transparent; color: var(--muted); text-align: left; cursor: pointer; transition: background .2s, color .2s, border-color .2s, transform .2s; }
+    .stage-button:hover { background: var(--panel); color: var(--ink); transform: translateX(3px); }
+    .stage-button[aria-selected="true"] { border-color: var(--line); background: var(--white); color: var(--ink); box-shadow: var(--shadow); }
+    .stage-index { display: grid; place-items: center; flex: 0 0 27px; height: 27px; border-radius: 50%; background: var(--panel); font-size: 12px; font-weight: 800; }
+    .stage-button[aria-selected="true"] .stage-index { background: var(--orange); color: #fff; }
+    .stage-panel { min-height: 340px; padding: 28px; border: 1px solid var(--line); background: var(--white); box-shadow: var(--shadow); }
+    .stage-panel h3 { margin: 0; font-size: 28px; letter-spacing: -.03em; }
+    .stage-panel .stage-state { display: inline-flex; margin: 14px 0 20px; padding: 5px 8px; border-radius: 4px; background: #e9f1eb; color: var(--green); font-size: 12px; font-weight: 800; }
+    .stage-panel.next .stage-state { background: #fff0e8; color: #d74600; }
+    .stage-panel.plan .stage-state { background: var(--panel); color: var(--muted); }
+    .stage-panel p { max-width: 690px; margin: 0 0 20px; color: var(--muted); }
+    .gate { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .gate-item { padding: 12px; border-top: 1px solid var(--line); }
+    .gate-item strong { display: block; font-size: 13px; }
+    .gate-item span { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; }
+    .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .task { position: relative; min-height: 288px; padding: 20px; border: 1px solid var(--line); background: var(--white); color: var(--ink); display: flex; flex-direction: column; gap: 14px; }
+    .task-number { color: var(--orange); font-size: 12px; font-weight: 850; letter-spacing: .12em; }
+    .task h3 { margin: 14px 0 0; font-size: 19px; }
+    .task p { margin: 0; color: var(--muted); font-size: 13px; }
+    .task button { align-self: start; margin-top: auto; border: 1px solid var(--line); border-radius: 5px; padding: 8px 10px; background: transparent; color: var(--muted); cursor: pointer; transition: .2s; }
+    .task details { font-size: 13px; }
+    .task summary { cursor: pointer; padding: 5px 0; text-decoration: underline; text-underline-offset: 4px; }
+    .task details p { margin-top: 12px; }
+    .task details a { display: inline-block; margin-top: 12px; }
+    .task button:hover { border-color: var(--orange); color: var(--orange); }
+    .task.done { border-color: var(--green); }
+    .task.done button { background: var(--green); border-color: var(--green); color: white; }
+    .task.done::after { content: "✓"; position: absolute; top: 18px; right: 18px; color: var(--green); font-weight: 900; }
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: stretch; }
+    .diagram { min-height: 300px; padding: 20px; border: 1px solid var(--line); background: var(--white); overflow: hidden; }
+    .diagram svg { width: 100%; height: 100%; min-height: 260px; }
+    .field { display: grid; align-content: center; padding: 30px; background: var(--panel); }
+    .field h3 { margin: 0 0 12px; font-size: 25px; }
+    .field p { margin: 0 0 18px; color: var(--muted); }
+    .field ul { padding-left: 18px; margin: 0; color: var(--muted); }
+    .field li + li { margin-top: 9px; }
+    .command { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 16px; border: 1px solid #3b3935; background: #1b1a18; color: #f3eee5; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 13px; overflow: auto; }
+    .copy { flex: 0 0 auto; border: 1px solid #5c564d; border-radius: 5px; padding: 6px 8px; background: transparent; color: #d1cac0; cursor: pointer; }
+    .copy:hover { border-color: var(--orange); color: var(--orange-soft); }
+    footer { padding: 28px 0 44px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+    footer .footer-line { display: flex; justify-content: space-between; gap: 24px; }
+    body:not(.lang-en) [data-en], body.lang-en [data-zh] { display: none !important; }
+    body.lang-en .block-zh { display: none; }
+    body.lang-en .block-en { display: block; }
+    .block-en { display: none; }
+    .reveal { opacity: 1; transform: none; transition: opacity .5s ease, transform .5s cubic-bezier(.2,.7,.2,1); }
+    .reveal.visible { opacity: 1; transform: none; }
+    :focus-visible { outline: 2px solid var(--orange); outline-offset: 5px; }
+    section, .stage-button { scroll-margin-top: 90px; }
+    .stage-link { display: inline-block; margin-top: 22px; font-size: 13px; text-underline-offset: 5px; }
+    .notice { color: #bdb8ae; font-size: 12px; margin-top: 16px; }
+    .toast { position: fixed; z-index: 9; bottom: 24px; left: 50%; transform: translate(-50%, 12px); padding: 12px 20px; border-radius: 7px; background: var(--ink); color: var(--white); box-shadow: var(--shadow); opacity: 0; pointer-events: none; transition: .2s ease; font-size: 13px; max-width: calc(100% - 32px); }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+    @keyframes grow { from { transform: scaleX(0); opacity: 0; } to { transform: scaleX(1); opacity: 1; } }
+    @media (max-width: 900px) { .hero-grid, .chain-layout, .split { grid-template-columns: 1fr; } .status-grid, .cards { grid-template-columns: repeat(2, 1fr); } .roadmap { grid-template-columns: 1fr; } .stage-list { grid-template-columns: repeat(4, 1fr); } .stage-button { justify-content: start; padding: 10px 6px; gap: 6px; font-size: 12px; } }
+    @media (max-width: 620px) { .shell { width: min(100% - 24px, 540px); } .topbar-inner { min-height: 56px; } .nav a { display: none; } .hero { padding: 56px 0 44px; } h1 { font-size: 50px; } .section { padding: 54px 0; } .section-head { display: block; } .section-lede { margin-top: 14px; } .status-grid, .cards, .gate { grid-template-columns: 1fr; } .stage-list { grid-template-columns: repeat(4, 1fr); } .stage-panel { min-height: 0; padding: 22px; } .chain { grid-template-columns: 1fr; } .chain-node::after { display: none; } footer .footer-line { display: block; } footer .footer-line span { display: block; margin-top: 8px; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } .reveal { opacity: 1; transform: none; } }
+    @media (max-width: 620px) { .stage-list { grid-template-columns: repeat(2, 1fr); } .hero-meta { gap: 1px; } h1 { font-size: clamp(34px, 9vw, 50px); line-height: 1.12; } .task { min-height: 260px; } }
+  </style>
+</head>
+<body class="lang-zh">
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#top"><span class="brand-mark"></span>ESP AIRBOAT</a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#status"><span data-zh>状态</span><span data-en>Status</span></a>
+        <a href="#roadmap"><span data-zh>管线</span><span data-en>Pipeline</span></a>
+        <a href="#next"><span data-zh>下一步</span><span data-en>Next</span></a>
+        <button class="lang" id="lang" type="button" aria-label="Switch language">EN</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <div class="eyebrow"><span data-zh>阶段 3 / 已验收</span><span data-en>PHASE 3 / VERIFIED</span></div>
+          <h1><span data-zh>让飞艇从<br>安全基线起飞</span><span data-en>BUILD THE AIRSHIP<br>FROM A SAFE CORE</span></h1>
+          <p class="hero-copy"><span data-zh>以 ESP-Mosaico 为主机，先验证界面、传感器和安全状态机，再逐步接入 DRV8833、三路动力和模块化氦气球。</span><span data-en>ESP-Mosaico is the host. We verify the UI, sensors, and safety state machine before adding DRV8833, three motor channels, and modular helium lift.</span></p>
+          <div class="hero-line"></div>
+        </div>
+        <div class="hero-meta" aria-label="Project snapshot">
+          <div class="hero-stat"><strong>1.2.0</strong><span><span data-zh>常规软件基线</span><span data-en>stable baseline</span></span></div>
+          <div class="hero-stat"><strong>250ms</strong><span><span data-zh>命令有效期</span><span data-en>command timeout</span></span></div>
+          <div class="hero-stat"><strong>3 AXIS</strong><span><span data-zh>推进 / 偏航 / 升降</span><span data-en>propulsion / yaw / lift</span></span></div>
+          <div class="hero-stat"><strong>1 → 3</strong><span><span data-zh>单电机到三路</span><span data-en>single motor to three</span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="status">
+      <div class="shell">
+        <div class="section-head reveal"><div><div class="section-kicker">01 / BASELINE</div><h2><span data-zh>现在手里有什么</span><span data-en>WHAT IS READY</span></h2></div><p class="section-lede"><span data-zh>绿点是已经走通的证据，橙点是下一条可执行的边界。</span><span data-en>Green is verified evidence. Orange is the next executable boundary.</span></p></div>
+        <div class="status-grid reveal">
+          <article class="status"><div class="status-dot"></div><strong><span data-zh>Mosaico UI</span><span data-en>Mosaico UI</span></strong><span data-zh>屏幕、触摸与安全面板已通过</span><span data-en>display, touch, and safety panel verified</span></article>
+          <article class="status"><div class="status-dot"></div><strong><span data-zh>安全状态机</span><span data-en>Safety core</span></strong><span data-zh>ARM / E-STOP / CLEAR 已通过</span><span data-en>ARM / E-STOP / CLEAR verified</span></article>
+          <article class="status"><div class="status-dot"></div><strong><span data-zh>BMI270</span><span data-en>BMI270</span></strong><span data-zh>采样、姿态与恢复路径已通过</span><span data-en>sampling, pose, and recovery verified</span></article>
+          <article class="status next"><div class="status-dot"></div><strong><span data-zh>DRV8833</span><span data-en>DRV8833</span></strong><span data-zh>到货后先做单电机拆桨台架</span><span data-en>propeller-off single-motor bench next</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark-band" id="chain">
+      <div class="shell chain-layout">
+        <div class="reveal"><div class="section-kicker">02 / CONTROL CHAIN</div><h2><span data-zh>一条清楚的控制链</span><span data-en>ONE CLEAR CONTROL CHAIN</span></h2><p class="section-lede"><span data-zh>界面只发请求，控制任务才拥有安全状态；未来的 GPIO 适配器位于安全快照之后。</span><span data-en>The UI posts requests. The control owner owns safety. A future GPIO adapter sits behind the safety snapshot.</span></p></div>
+        <div class="chain reveal">
+          <div class="chain-node"><span>INPUT</span><strong><span data-zh>触摸 / 遥控</span><span data-en>touch / remote</span></strong></div>
+          <div class="chain-node"><span>QUEUE</span><strong><span data-zh>有界命令通道</span><span data-en>bounded inbox</span></strong></div>
+          <div class="chain-node"><span>OWNER</span><strong><span data-zh>安全控制任务</span><span data-en>safety owner</span></strong></div>
+          <div class="chain-node"><span>OUTPUT</span><strong><span data-zh>DRV8833 / 电机</span><span data-en>DRV8833 / motor</span></strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="roadmap">
+      <div class="shell">
+        <div class="section-head reveal"><div><div class="section-kicker">03 / PIPELINE</div><h2><span data-zh>按阶段推进</span><span data-en>MOVE BY GATES</span></h2></div><p class="section-lede"><span data-zh>每一步都有入口、动作和完成信号。点击阶段查看细节。</span><span data-en>Every step has an entry, an action, and an exit signal. Select a stage for detail.</span></p></div>
+        <div class="roadmap reveal">
+          <div class="stage-list" role="tablist" aria-label="Development stages">
+            <button class="stage-button" role="tab" aria-selected="false" data-stage="0"><span class="stage-index">0</span><span data-zh>离线基线</span><span data-en>Offline</span></button>
+            <button class="stage-button" role="tab" aria-selected="false" data-stage="1"><span class="stage-index">1</span><span data-zh>设备核验</span><span data-en>Identity</span></button>
+            <button class="stage-button" role="tab" aria-selected="false" data-stage="2"><span class="stage-index">2</span><span data-zh>更新准备</span><span data-en>Update prep</span></button>
+            <button class="stage-button" role="tab" aria-selected="false" data-stage="3"><span class="stage-index">3</span><span data-zh>传感器 / UI</span><span data-en>Sensor / UI</span></button>
+            <button class="stage-button" role="tab" aria-selected="true" data-stage="4"><span class="stage-index">4</span><span data-zh>单电机</span><span data-en>Single motor</span></button>
+            <button class="stage-button" role="tab" aria-selected="false" data-stage="5"><span class="stage-index">5</span><span data-zh>三路控制</span><span data-en>Three axes</span></button>
+            <button class="stage-button" role="tab" aria-selected="false" data-stage="6"><span class="stage-index">6</span><span data-zh>多囊系留</span><span data-en>Modular lift</span></button>
+            <button class="stage-button" role="tab" aria-selected="false" data-stage="7"><span class="stage-index">7</span><span data-zh>可选升级</span><span data-en>Options</span></button>
+          </div>
+          <article class="stage-panel" id="stage-panel" role="tabpanel"></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark-band" id="next">
+      <div class="shell">
+        <div class="section-head reveal"><div><div class="section-kicker">04 / NEXT SESSION</div><h2><span data-zh>到货后的四步</span><span data-en>FOUR STEPS TO THE BENCH</span></h2></div><p class="section-lede"><span data-zh>到货后从左到右完成。展开每张卡查看动作；勾选保存在当前浏览器，方便现场记录。</span><span data-en>Work left to right after arrival. Expand a card for actions; checkmarks are saved in this browser.</span></p></div>
+        <div class="cards reveal">
+          <article class="task" data-task="arrival"><div class="task-number">01 / ARRIVAL</div><h3><span data-zh>拍照与称量</span><span data-en>Photograph & weigh</span></h3><p><span data-zh>拍 DRV8833、电机、电池、插头和每个气囊。统一用克记录。</span><span data-en>Photograph the driver, motors, battery, connectors, and each balloon. Record grams.</span></p><details><summary><span data-zh>现场动作</span><span data-en>Actions</span></summary><p><span data-zh>先断电；拍正反面与丝印；每件称重并记录单位。</span><span data-en>Power off first; photograph labels and both sides; weigh every part in grams.</span></p></details><button type="button"><span data-zh>标记完成</span><span data-en>Mark ready</span></button></article>
+          <article class="task" data-task="parameters"><div class="task-number">02 / SCREEN</div><h3><span data-zh>筛查参数</span><span data-en>Screen parameters</span></h3><p><span data-zh>把卖家资料填入 JSON，确认电压、电流、封装、插头都有来源。</span><span data-en>Fill the JSON record and source voltage, current, package, and connectors.</span></p><details><summary><span data-zh>现场动作</span><span data-en>Actions</span></summary><p><span data-zh>复制模板，填未知项为 null；运行参数筛查，看到 pending 就停在缺项。</span><span data-en>Copy the template, use null for unknowns, and stop on every pending result.</span></p><a href="../hardware/drv8833/arrival-record.template.json"><span data-zh>打开记录模板</span><span data-en>Open record template</span></a></details><button type="button"><span data-zh>标记完成</span><span data-en>Mark ready</span></button></article>
+          <article class="task" data-task="software"><div class="task-number">03 / SOFTWARE</div><h3><span data-zh>单路固件</span><span data-en>Single-channel firmware</span></h3><p><span data-zh>先跑主机测试和模拟器，再按当前设备身份更新。</span><span data-en>Run host tests and simulator before updating the selected live device.</span></p><details><summary><span data-zh>现场动作</span><span data-en>Actions</span></summary><p><span data-zh>先运行主机检查；再启动模拟器；硬件更新只使用实时发现的 Mosaico 身份。</span><span data-en>Run host checks, then the simulator; use only the live Mosaico identity for hardware updates.</span></p></details><button type="button"><span data-zh>标记完成</span><span data-en>Mark ready</span></button></article>
+          <article class="task" data-task="bench"><div class="task-number">04 / BENCH</div><h3><span data-zh>拆桨台架</span><span data-en>Propeller-off bench</span></h3><p><span data-zh>Interaction 断电取下，只接一台电机，限流后测启停、换向、急停和温升。</span><span data-en>Remove Interaction with power off. Test one motor with current limit, no propeller.</span></p><details><summary><span data-zh>现场动作</span><span data-en>Actions</span></summary><p><span data-zh>桨叶拆下并固定电机；先接 USB，再接限流动力；每次只动作一台电机。</span><span data-en>Remove the propeller and secure the motor; connect USB first, then limited motor power; run one motor at a time.</span></p></details><button type="button"><span data-zh>标记完成</span><span data-en>Mark ready</span></button></article>
+        </div>
+        <div style="margin-top: 20px" class="command"><code>python scripts/check-arrival.py --record hardware/drv8833/arrival-record.template.json</code><button class="copy" type="button" data-copy="python scripts/check-arrival.py --record hardware/drv8833/arrival-record.template.json" aria-label="Copy command">⧉</button></div>
+      </div>
+    </section>
+
+    <section class="section" id="balloons">
+      <div class="shell split">
+        <div class="diagram reveal" aria-label="Modular balloon diagram">
+          <svg viewBox="0 0 560 300" role="img" aria-label="One main and two side balloon modules">
+            <path d="M60 125 Q100 48 208 76 Q260 92 270 126 Q278 92 330 76 Q438 48 500 125 Q446 184 330 164 Q280 155 270 142 Q260 155 210 164 Q96 184 60 125Z" fill="#f1e1c4" stroke="#b99b6f" stroke-width="3"/>
+            <ellipse cx="270" cy="100" rx="105" ry="54" fill="#fff7e7" stroke="#c6a777" stroke-width="3"/>
+            <path d="M140 150 L185 230 L355 230 L400 150" fill="none" stroke="#121211" stroke-width="4"/>
+            <rect x="215" y="211" width="110" height="40" rx="5" fill="#121211"/>
+            <circle cx="244" cy="231" r="7" fill="#ff5600"/><circle cx="270" cy="231" r="7" fill="#4c8c6b"/><circle cx="296" cy="231" r="7" fill="#4a7483"/>
+            <text x="270" y="90" text-anchor="middle" font-size="16" font-weight="800" fill="#121211">MAIN</text>
+            <text x="270" y="281" text-anchor="middle" font-size="13" fill="#6d675e">shared load frame / gondola / ambient barometer</text>
+          </svg>
+        </div>
+        <div class="field reveal"><div class="section-kicker">05 / MODULAR LIFT</div><h3><span data-zh>主囊 + 左右侧囊</span><span data-en>MAIN + SIDE MODULES</span></h3><p><span data-zh>先把浮力拆成可以单独测量的模块。主囊下方的吊舱放环境气压计，气囊内压和漏气检测另立需求。</span><span data-en>Split lift into modules that can be measured separately. Put the ambient barometer in the ventilated gondola; internal pressure and leak sensing are separate features.</span></p><ul><li><span data-zh>每个气囊单独称重、测净升力</span><span data-en>weigh and measure lift per module</span></li><li><span data-zh>再测完整悬挂体，最后做近中性配平</span><span data-en>measure the full suspended body, then balance near neutral</span></li><li><span data-zh>BMP581 给相对高度趋势，不等于离地高度</span><span data-en>BMP581 gives altitude trend, not ground distance</span></li></ul></div>
+      </div>
+    </section>
+
+    <section class="section dark-band" id="links">
+      <div class="shell">
+        <div class="section-head reveal"><div><div class="section-kicker">06 / KEEP BUILDING</div><h2><span data-zh>资料都在入口处</span><span data-en>EVERYTHING HAS AN ENTRY</span></h2></div><p class="section-lede"><span data-zh>从源码、管线、到货记录开始；每次只推进一条边界。</span><span data-en>Start with source, pipeline, and arrival records. Move one boundary at a time.</span></p></div>
+        <div class="command reveal"><code>firmware/airboat_baseline/</code><a href="../README.md" class="copy" aria-label="Open README">↗</a></div>
+        <div style="height: 8px"></div>
+        <div class="command reveal"><code>hardware/drv8833/arrival-single-motor-checklist.md</code><a href="../hardware/drv8833/arrival-single-motor-checklist.md" class="copy" aria-label="Open checklist">↗</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+      <div class="shell footer-line"><span>ESP AirBoat · Mosaico · MIT · 2026-11-04</span><span><a href="https://github.com/404-NOT-FOUND-ERROR/ESP-Airship-based-on-Mosaico">GitHub</a> · <a href="design-system.md"><span data-zh>设计规范</span><span data-en>Design system</span></a> · <a href="https://mosaico.ai/zh-hans/guide">Mosaico</a></span></div>
+  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (() => {
+      const stages = [
+        { state: 'verified', title: ['离线基线', 'Offline baseline'], copy: ['安全状态机、命令队列、IMU 模型和界面在电脑上保持可复现。', 'Safety state, command inbox, IMU model, and UI stay reproducible on the host.'], gate: [['入口', 'Entry', '源码与工具可用', 'Source and tools available'], ['完成', 'Exit', '主机测试与模拟器通过', 'Host checks and simulator pass']] },
+        { state: 'verified', title: ['设备核验', 'Device identity'], copy: ['使用实时发现结果选择 Mosaico，核对身份、模式、版本、能力和布局。', 'Select Mosaico from live discovery and verify identity, mode, version, capabilities, and layout.'], gate: [['入口', 'Entry', 'Vibe Mode / Iris 在线', 'Vibe Mode / Iris online'], ['完成', 'Exit', '同一目标的 inventory 记录', 'Inventory from the selected target']] },
+        { state: 'verified', title: ['更新准备', 'Update preparation'], copy: ['核对保留分区、恢复入口和候选包，确定更新方法。', 'Check the retained partition, recovery path, and candidate package before choosing the update method.'], gate: [['入口', 'Entry', '设备布局与资源可读', 'Live layout and resources readable'], ['完成', 'Exit', '候选包与恢复路径已记录', 'Candidate package and recovery path recorded']] },
+        { state: 'verified', title: ['传感器 / UI', 'Sensor / UI'], copy: ['显示、触摸、BMI270 静止采样、姿态映射和应用层恢复已通过。', 'Display, touch, BMI270 sampling, pose mapping, and application-level recovery are verified.'], gate: [['入口', 'Entry', '软件基线已安装', 'Software baseline installed'], ['完成', 'Exit', '实屏链路与采样记录', 'Device UI and sample records']] },
+        { state: 'next', title: ['单电机', 'Single motor'], copy: ['到货后加入 DRV8833 适配器。拆桨、限流，只让一个桥短时动作。', 'Add the DRV8833 adapter after arrival. Remove the propeller, limit current, and pulse one bridge briefly.'], gate: [['入口', 'Entry', '参数筛查通过', 'Parameter screen passes'], ['完成', 'Exit', '电流 / 温升 / 急停 / 重启', 'Current / temperature / E-STOP / restart']] },
+        { state: 'plan', title: ['三路控制', 'Three channels'], copy: ['把推进、偏航、升降映射到三台电机，并一起检查电源和故障时序。', 'Map propulsion, yaw, and lift to three motors and verify power and fault sequences together.'], gate: [['入口', 'Entry', '单路台架通过', 'Single-motor bench passes'], ['完成', 'Exit', '三路默认态与超时', 'Three-channel defaults and timeout']] },
+        { state: 'plan', title: ['多囊系留', 'Modular lift'], copy: ['独立气囊共享承力框架，逐囊称量，再进行完整悬挂体配平和系留动作。', 'Use independent balloons on one frame, weigh each module, then balance and test the tethered body.'], gate: [['入口', 'Entry', '三路输出稳定', 'Three outputs stable'], ['完成', 'Exit', '近中性配平 / 系留', 'Near-neutral balance / tether']] },
+        { state: 'plan', title: ['可选升级', 'Optional features'], copy: ['在系留基础上逐项加入 BMP581、摄像头、远程输入和姿态闭环。', 'Add BMP581, camera, remote input, and attitude control one at a time after tethered tests.'], gate: [['入口', 'Entry', '基础飞行行为稳定', 'Base flight behavior stable'], ['完成', 'Exit', '每项独立验收记录', 'Independent record for each feature']] }
+      ];
+      const panel = document.getElementById('stage-panel');
+      const renderStage = index => {
+        const s = stages[index];
+        panel.className = `stage-panel ${s.state}`;
+        panel.innerHTML = `<h3><span data-zh>${s.title[0]}</span><span data-en>${s.title[1]}</span></h3><div class="stage-state"><span data-zh>${s.state === 'verified' ? '已验收' : s.state === 'next' ? '下一步' : '计划'}</span><span data-en>${s.state === 'verified' ? 'VERIFIED' : s.state === 'next' ? 'NEXT' : 'PLANNED'}</span></div><p><span data-zh>${s.copy[0]}</span><span data-en>${s.copy[1]}</span></p><div class="gate">${s.gate.map(g => `<div class="gate-item"><strong><span data-zh>${g[0]}</span><span data-en>${g[1]}</span></strong><span data-zh>${g[2]}</span><span data-en>${g[3]}</span></div>`).join('')}</div>`;
+      };
+      const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+      const tabs = [...document.querySelectorAll('.stage-button')];
+      const selectStage = (index, updateHash = false) => {
+        if (!Number.isInteger(index) || !stages[index]) index = 4;
+        tabs.forEach((tab, i) => {
+          tab.id = `stage-${i}`;
+          tab.setAttribute('aria-controls', 'stage-panel');
+          tab.setAttribute('aria-selected', String(i === index));
+          tab.tabIndex = i === index ? 0 : -1;
+        });
+        panel.setAttribute('aria-labelledby', `stage-${index}`);
+        renderStage(index);
+        if (!reducedMotion.matches && panel.animate) {
+          panel.getAnimations().forEach(animation => animation.cancel());
+          panel.animate([{ opacity: .35, transform: 'translateY(6px)' }, { opacity: 1, transform: 'none' }], { duration: 220, easing: 'cubic-bezier(.2,.7,.2,1)' });
+        }
+        if (updateHash) {
+          try { history.replaceState(null, '', `#stage-${index}`); } catch (_) { /* File preview keeps its current address. */ }
+        }
+      };
+      tabs.forEach((button, index) => {
+        button.addEventListener('click', () => selectStage(index, true));
+        button.addEventListener('keydown', event => {
+          const keys = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 };
+          let target;
+          if (event.key in keys) target = (index + keys[event.key] + tabs.length) % tabs.length;
+          else if (event.key === 'Home') target = 0;
+          else if (event.key === 'End') target = tabs.length - 1;
+          if (target === undefined) return;
+          event.preventDefault();
+          selectStage(target, true);
+          tabs[target].focus();
+        });
+      });
+      const readHash = () => selectStage(/^#stage-[0-7]$/.test(location.hash) ? Number(location.hash.slice(-1)) : 4);
+      readHash();
+      window.addEventListener('hashchange', () => { if (location.hash.startsWith('#stage-')) readHash(); });
+
+      const storage = {
+        get(key) { try { return localStorage.getItem(key); } catch (_) { return null; } },
+        set(key, value) { try { localStorage.setItem(key, value); } catch (_) { /* Checkmarks still work for this open page. */ } }
+      };
+      const langButton = document.getElementById('lang');
+      const setLanguage = english => {
+        document.body.classList.toggle('lang-en', english);
+        document.documentElement.lang = english ? 'en' : 'zh-CN';
+        langButton.textContent = english ? '中' : 'EN';
+        langButton.setAttribute('aria-label', english ? '切换到中文' : 'Switch to English');
+        storage.set('airboat-language', english ? 'en' : 'zh');
+      };
+      const requestedLanguage = new URLSearchParams(location.search).get('lang');
+      setLanguage(requestedLanguage ? requestedLanguage === 'en' : storage.get('airboat-language') === 'en');
+      langButton.addEventListener('click', () => setLanguage(!document.body.classList.contains('lang-en')));
+      document.querySelectorAll('[data-task]').forEach(task => {
+        const key = `airboat-${task.dataset.task}`;
+        const button = task.querySelector('button');
+        const mark = done => {
+          task.classList.toggle('done', done);
+          button.setAttribute('aria-pressed', String(done));
+          button.innerHTML = done ? '<span data-zh>✓ 已记录</span><span data-en>✓ Recorded</span>' : '<span data-zh>标记完成</span><span data-en>Mark ready</span>';
+        };
+        mark(storage.get(key) === 'done');
+        button.addEventListener('click', () => {
+          const done = !task.classList.contains('done');
+          mark(done);
+          storage.set(key, done ? 'done' : 'todo');
+        });
+      });
+      const toast = document.getElementById('toast');
+      let toastTimer;
+      const announce = (zh, en) => {
+        toast.textContent = document.body.classList.contains('lang-en') ? en : zh;
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
+      };
+      document.querySelectorAll('[data-copy]').forEach(button => button.addEventListener('click', async () => {
+        let copied = false;
+        try {
+          if (navigator.clipboard) { await navigator.clipboard.writeText(button.dataset.copy); copied = true; }
+        } catch (_) { /* Use the selected-text fallback below. */ }
+        if (!copied) {
+          const input = document.createElement('textarea');
+          input.value = button.dataset.copy;
+          input.setAttribute('readonly', '');
+          input.style.cssText = 'position:fixed;left:-9999px;top:0';
+          document.body.append(input);
+          input.select();
+          try { copied = document.execCommand('copy'); } catch (_) { /* Let the user copy the visible command. */ }
+          input.remove();
+          button.focus({ preventScroll: true });
+        }
+        if (!copied) {
+          const range = document.createRange();
+          range.selectNodeContents(button.previousElementSibling);
+          const selection = window.getSelection();
+          selection.removeAllRanges(); selection.addRange(range);
+        }
+        announce(copied ? '命令已复制' : '命令已选中，按 Ctrl+C 复制', copied ? 'Command copied' : 'Command selected; press Ctrl+C');
+      }));
+      if ('IntersectionObserver' in window && !reducedMotion.matches) {
+        const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.animate([{ opacity: .35, transform: 'translateY(10px)' }, { opacity: 1, transform: 'none' }], { duration: 480, easing: 'cubic-bezier(.2,.7,.2,1)' });
+          observer.unobserve(entry.target);
+        }), { threshold: .1 });
+        document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+      }
+      if (location.hostname.endsWith('.github.io')) {
+        document.querySelectorAll('a[href]').forEach(link => {
+          const href = link.getAttribute('href');
+          if (/^(?:\.\.\/)?[^:#]+\.(?:md|json|csv)$/.test(href)) {
+            link.href = new URL(href, 'https://github.com/404-NOT-FOUND-ERROR/ESP-Airship-based-on-Mosaico/blob/main/docs/').href;
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

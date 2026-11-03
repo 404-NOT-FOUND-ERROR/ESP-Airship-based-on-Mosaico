@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "record_kind": "arrival_parameter_record",
+  "selected_axis": "propulsion",
+  "driver": {
+    "model": null,
+    "package": null,
+    "board_id": null,
+    "rating_vm_min_v": null,
+    "rating_vm_max_v": null,
+    "rating_ambient_c": null,
+    "continuous_per_bridge_a": null,
+    "peak_per_bridge_a": null,
+    "peak_duration_ms": null,
+    "logic_3v3_confirmed": null,
+    "standby_3v3_confirmed": null,
+    "source": null
+  },
+  "motors": [
+    {"axis": "propulsion", "model": null, "type": null, "vm_min_v": null, "vm_max_v": null, "no_load_a": null, "loaded_a": null, "startup_a": null, "startup_ms": null, "source": null},
+    {"axis": "yaw", "model": null, "type": null, "vm_min_v": null, "vm_max_v": null, "no_load_a": null, "loaded_a": null, "startup_a": null, "startup_ms": null, "source": null},
+    {"axis": "lift", "model": null, "type": null, "vm_min_v": null, "vm_max_v": null, "no_load_a": null, "loaded_a": null, "startup_a": null, "startup_ms": null, "source": null}
+  ],
+  "test_power": {
+    "kind": null,
+    "cells": null,
+    "vm_min_v": null,
+    "vm_max_v": null,
+    "continuous_a": null,
+    "peak_a": null,
+    "peak_duration_ms": null,
+    "source": null
+  },
+  "harness": {
+    "connector_type": null,
+    "continuous_a": null,
+    "peak_a": null,
+    "peak_duration_ms": null,
+    "polarity_checked": null,
+    "source": null
+  },
+  "tools_available": {"multimeter": null, "current_limited_supply": null, "scale_0_1g": null},
+  "mass_collection": {
+    "status": "deferred_until_arrival",
+    "unit": "g",
+    "mosaico": null,
+    "camera": null,
+    "interaction": null,
+    "driver_1": null,
+    "driver_2": null,
+    "airborne_assembly": null,
+    "balloon_modules": []
+  },
+  "manual_acceptance": {
+    "interaction_removed_power_off": null,
+    "h1_pin_numbers_reviewed": null,
+    "unused_inputs_low": null,
+    "propeller_removed_motor_fixed": null,
+    "power_disconnect_reachable": null,
+    "single_motor_firmware_sha256": null,
+    "firmware_build_and_simulator_passed": null,
+    "device_update_and_live_identity_passed": null,
+    "bench_current_and_temperature_passed": null
+  }
+}
