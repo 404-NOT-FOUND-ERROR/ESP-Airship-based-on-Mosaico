@@ -28,6 +28,26 @@ Mosaico display / touch
 
 `main` only composes components and keeps their lifetimes. The UI posts requests; it never drives a GPIO. The motor task owns the safety state. The IMU task owns the BMI270 handle and publishes value snapshots. This makes the same safety model testable on a PC before a motor is powered.
 
+## Face and body choreography — planned firmware
+
+```text
+touch / pose / idle timer → companion state → expression timeline
+                                            ├→ face / short sound
+                                            └→ motion intent → command inbox → safety owner → driver
+```
+
+The [interactive exhibit](roadmap.html#companion) previews looking around, one
+slow turn, a gentle yaw sway, and quiet hovering. One monotonic timeline will
+publish `expression_snapshot`: action ID, elapsed time, gaze, blink, motion
+intent, and expiry. Automatic idle motion runs once, settles, and cools down;
+manual input, timeout, and E-STOP cancel it. Hardware motion follows stage 4–6
+bench and tether validation, then heading and drift observations. A turn uses
+measured accumulated yaw; hovering in position is a separate closed-loop goal.
+Decorative features stay in the evolving exterior design.
+
+The web animation is implemented. The firmware state/timeline components and
+physical movement are planned. The installed device baseline remains 1.2.0.
+
 ## Safety contract
 
 - Start in `DISARMED`; ARM clears stale commands.

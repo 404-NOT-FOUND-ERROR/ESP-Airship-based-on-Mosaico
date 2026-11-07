@@ -10,6 +10,7 @@ A modular helium airship built around ESP-Mosaico. This repository contains the 
 
 - `firmware/airboat_baseline/` — portable ESP-Mosaico application source. The current release is a software-only safety baseline: display, touch, BMI270 snapshots, command queue, and a latched motor safety state machine. GPIO/PWM is deliberately added in the next stage.
 - `docs/roadmap.html` — an offline, interactive project map. It shows the current verified baseline, the next four build cards, the control chain, and the modular balloon concept.
+- [Face and motion exhibit](https://404-not-found-error.github.io/ESP-Airship-based-on-Mosaico/roadmap.html#companion) — look around, turn in place, gentle sway, and quiet hover. Pause and scrub one shared face/body timeline. Web previews are ready; firmware choreography and hardware motion follow the stage gates.
 - `docs/architecture.md` — ownership, data flow, update boundary, and the planned DRV8833 adapter.
 - `docs/pipeline.md` — stage gates and acceptance evidence.
 - `docs/design-system.md` — the shared Mosaico-inspired visual and interaction rules.

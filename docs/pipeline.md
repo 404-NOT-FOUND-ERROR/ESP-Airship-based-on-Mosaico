@@ -18,6 +18,15 @@ Each stage has a clear entry and exit. Build success, device update, live health
 | 6. Modular lift | balloon frame, mass and tether tests | near-neutral balance and controlled tether motion | Planned |
 | 7. Optional features | camera, remote input, barometer and closed loop | each feature has its own acceptance record | Planned |
 
+## Parallel expression path
+
+The [face-and-motion exhibit](roadmap.html#companion) is ready: four motion
+studies, a shared face/body timeline, pause, and scrubbing. Next, implement the
+portable companion state and expression timeline, then integrate the device
+face. Physical motion follows the existing single-motor, three-channel, and
+tether gates. The installed Mosaico baseline remains 1.2.0. Three DRV8833 boards
+are ordered: two for three motors and one spare. The TB6612 and wires are on hand.
+
 ## Working rules
 
 - Keep the last verified baseline installable before changing the next boundary.

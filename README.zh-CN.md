@@ -10,6 +10,7 @@
 
 - `firmware/airboat_baseline/`：可移植的 ESP-Mosaico 应用源码。当前版本是软件安全基线，包含显示、触摸、BMI270 快照、命令队列和锁存式电机安全状态机；GPIO/PWM 会在下一阶段接入。
 - `docs/roadmap.html`：离线交互路线页，展示已验收基线、接下来四张操作卡、控制链路和模块化气囊结构。
+- [动作与表情工作台](https://404-not-found-error.github.io/ESP-Airship-based-on-Mosaico/roadmap.html#companion)：张望、原地转圈、轻摆和安静悬停，可暂停、拖动统一时间轴。网页预览已完成；固件编排与实机动作按管线推进。
 - `docs/architecture.md`：模块职责、数据流、固件更新边界和 DRV8833 适配位置。
 - `docs/pipeline.md`：阶段入口、完成条件和证据口径。
 - `docs/design-system.md`：Mosaico 风格的视觉和交互约定。

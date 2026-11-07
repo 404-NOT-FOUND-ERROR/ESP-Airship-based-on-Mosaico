@@ -32,6 +32,15 @@ next action second, engineering detail third.
 - The public page supports keyboard stage navigation with arrow keys, Home and
   End. The device scene keeps the same clear labels and zero-output default.
 
+## Face and body exhibit
+
+The motion study uses the same paper, ink, orange, and green tokens. Use a quiet
+abstract body, a separate readable face inset, and a heading marker. One action
+selection drives all previews from one timeline; scrubbing pauses playback.
+Transitions settle over 360–400 ms. Pause animation outside the viewport and
+start with a still frame for `prefers-reduced-motion`; explicit Play is available.
+Label evidence as device verified, web preview ready, or planned firmware.
+
 ## Layout rules
 
 Use a constrained content width, a 12–16 px base spacing step, and a 4 px
